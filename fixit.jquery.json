@@ -1,0 +1,37 @@
+{
+	"name"			: "fixit",
+	"version"		: "1.0.1",
+	"title"			: "Element position fix",
+	"author"		: {
+		"name"	: "Prakash Sharma",
+		"url"	: "https://github.com/itsprakash87/"
+	},
+	
+	"description"	: "Fix any element on the page according to the options passed.You can also add class to the element when it is fixed.It also trigger events when element is fixed and unfixed.",
+	"keywords"		: [
+		"fix",
+		"element",
+		"sticky",
+		"fixed",
+		"scroll",
+		"position",
+		"plugin"
+	],
+	"bugs"			: "https://github.com/itsprakash87/fixit/issues",
+	"homepage"		: "https://github.com/itsprakash87/fixit",
+	"docs"			: "https://github.com/itsprakash87/fixit",
+	"download"		: "https://github.com/itsprakash87/fixit/archive/master.zip",
+	"demo"			: "http://itsprakash87.github.io/",
+	"files"			: [
+		"jquery.fixit.js"
+	],
+	"dependencies"	: {
+		"jquery" : ">1.4.0"
+	},
+	"licenses"		: [
+		{
+		    "type": "MIT",
+		    "url": "http://opensource.teamdf.com/license/"
+		}
+	]
+}
