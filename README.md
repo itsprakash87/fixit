@@ -1,6 +1,7 @@
 # Fixit
 
 Fixit is a jquery plugin which can be used to fix any element on the webpage.
+For Demo : [CLICK HERE](http://itsprakash87.github.io)
 
 ## Fixit in brief : 
 
@@ -114,5 +115,3 @@ Things to consider for better result :
 - Always define ID for the target elements.
 - Use class to style the target element and avoid styling using ID or inline style attribute. 
 
-
-For Demo : Click [here](http://itsprakash87.github.io)
