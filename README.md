@@ -1,7 +1,7 @@
 # Fixit
 
 Fixit is a jquery plugin which can be used to fix any element on the webpage.
-For Demo : [CLICK HERE](http://itsprakash87.github.io)
+For Demo : [Click here](http://itsprakash87.github.io)
 
 ## Fixit in brief : 
 
