@@ -2,6 +2,7 @@
 
 Fixit is a jquery plugin which can be used to fix any element on the webpage.
 For Demo : [Click here](http://itsprakash87.github.io/demo/fixit/index.html)
+This plugin was also featured on : [jqueryscript.net](http://www.jqueryscript.net/other/jQuery-Plugin-To-Fix-Any-Elements-On-The-Top-Fixit.html) with [Demo](http://www.jqueryscript.net/demo/jQuery-Plugin-To-Fix-Any-Elements-On-The-Top-Fixit/)
 
 ## Fixit in brief : 
 
