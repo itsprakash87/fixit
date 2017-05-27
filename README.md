@@ -3,15 +3,14 @@
 Fixit is a jquery plugin which can be used to fix any element on the webpage.
 For Demo : [Click here](http://itsprakash87.github.io/demo/fixit/index.html)
 
-This plugin was also featured on : [jqueryscript.net](http://www.jqueryscript.net/other/jQuery-Plugin-To-Fix-Any-Elements-On-The-Top-Fixit.html) with [Demo](http://www.jqueryscript.net/demo/jQuery-Plugin-To-Fix-Any-Elements-On-The-Top-Fixit/)
 
-## Fixit in brief : 
+## Fixit : 
 
 Fixit jquery plugin can be used to fix the element at a certain position when the webpage is scrolled and the element is to be hidden, so that the element stay visible on the webpage.
 By passing the values of the different options provided, one can control the element.
 This easy to use plugin prevent one from dealing with the jquery/javascript code.
 
-## Usage
+## How to use
 
 - Include jQuery and fixit.
 
@@ -112,7 +111,7 @@ Following are the custom events which are triggered.
 </script>
 ```
 
-Things to consider for better result :
+## Things to consider for better result :
 
 - Always define ID for the target elements.
 - Use class to style the target element and avoid styling using ID or inline style attribute. 
