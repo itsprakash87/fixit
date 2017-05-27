@@ -10,6 +10,12 @@ Fixit jquery plugin can be used to fix the element at a certain position when th
 By passing the values of the different options provided, one can control the element.
 This easy to use plugin prevent one from dealing with the jquery/javascript code.
 
+## Install : 
+
+````
+npm install fix-it
+````
+
 ## How to use
 
 - Include jQuery and fixit.
