@@ -1,6 +1,6 @@
 {
-  "name": "fixit",
-  "version": "1.0.0",
+  "name": "fix-it",
+  "version": "1.0.2",
   "description": "Fix any element on the webpage",
   "main": "jquery.fixit.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "jquery-plugin",
     "sticky",
     "fix",
-    "fixit"
+    "fixit",
+    "fix-it"
   ],
   "author": "Prakash Sharma",
   "license": "MIT",

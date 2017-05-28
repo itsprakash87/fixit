@@ -25,10 +25,16 @@ npm install fix-it
 <script src="jquery.fixit.js"></script>
 ```
 
-- Give an ID to the target element.
+- Give an ID to the target element.(Always give an unique id to target element.)
 
 ```html
 <div id = "fixthis"> Content to be fixed. </div>
+```
+
+- Add class to style the element if you want. (Avoid inline style and style by id for target element.)
+
+```html
+<div id = "fixthis" class = "myClass" > Content to be fixed. </div>
 ```
 
 - Call fixit.
@@ -116,9 +122,4 @@ Following are the custom events which are triggered.
   });
 </script>
 ```
-
-## Things to consider for better result :
-
-- Always define ID for the target elements.
-- Use class to style the target element and avoid styling using ID or inline style attribute. 
 
