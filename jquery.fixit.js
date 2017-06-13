@@ -9,91 +9,87 @@
 // It also trigger events when element is "fixed" and "unfixed".
 
 (function ($) {
-    var $i = 0;
-    $.fn.fixit = function (options) {
-        
+	var fixedElementCount = 0;
 
-        // Default values.
-        var settings = $.extend({
-            topMargin: 0,
-            offest:0,
-            addClassAfter: null,
-            sameDimension: true,
-            zIndex: 0,
-            reset:false,
-            direction:false,
-        }, options);
+	$.fn.fixit = function (options) {
 
-        $(this).each(function(index, element){
-                var $w = $(window); 
-                var $el = $(element); 
-                var $_top_last = 0; 
-                var $_actual_position = $el.css("position");
-                var previousScroll = 0;
-                var checkDirection= settings.direction ? false : true;
+		// Default values.
+		var settings = $.extend({
+			topMargin: 0,
+			offset: 0,
+			addClassAfter: null,
+			sameDimension: true,
+			zIndex: 0,
+			reset: false,
+			direction: false,
+		}, options);
 
-                $(window).scroll(function () {
-                
-         
+		$(this).each(function (index, element) {
+			var $w = $(window);
+			var $el = $(element);
+			var actualTopPosition = 0;
+			var previousScroll = 0;
+			var rightDirection = !settings.direction;
 
+			$w.scroll(function () {
 
-                if (settings.direction) {
-                    
-                    var currentScroll = $(this).scrollTop();
+				if (settings.direction) {
+					var currentScroll = $(this).scrollTop();
 
-                   if (currentScroll > previousScroll){
-                       settings.direction =='down'? checkDirection = true : checkDirection = false;
-                   } else {
-                      settings.direction =='up'? checkDirection = true : checkDirection = false;
-                   }
-                   previousScroll = currentScroll;
-                }
+					if(settings.direction !== "down" || settings.direction !== "up"){
+						rightDirection = true;
+					}
+					else if (currentScroll > previousScroll) {
+						settings.direction == "down" ? rightDirection = true : rightDirection = false;
+					} else {
+						settings.direction == "up" ? rightDirection = true : rightDirection = false;
+					}
 
+					previousScroll = currentScroll;
+				}
 
-                    // Get element and scroll positions.
-                    var $_top = $el.offset().top, viewTop = $w.scrollTop() + settings.topMargin;
-                    elem=$el;
-                    // Get height and width of element.
-                    var $width_ele = $(elem).outerWidth(); 
-                    var $height_ele = $(elem).outerHeight(); 
+				// Get element's and scroll positions.
+				var currentTopPosition = $el.offset().top;
+				var scrollPosition = $w.scrollTop() + settings.topMargin;
+				
+				// Get height and width of element.
+				var elementWidth = $el.outerWidth();
+				var elementHeight = $el.outerHeight();
 
-                    if ($el.css("position") != "fixed" && viewTop > ($_top + settings.offest) && checkDirection && settings.reset==false) {
-                        // Fix the element.
-                        $_actual_position = $el.css("position");
-                        $el.css("position", "fixed");
-                        $el.css("top", "" + settings.topMargin + "px");
-                        $el.css("z-index", "" + settings.zIndex);
+				if ($el.css("position") !== "fixed" && scrollPosition > (currentTopPosition + settings.offset) && rightDirection && settings.reset === false) {
+					// Fix the element.
+					$el.css("position", "fixed");
+					$el.css("top", "" + settings.topMargin + "px");
+					$el.css("z-index", "" + settings.zIndex);
 
-                        if (settings.sameDimension) {
-                            $el.css("width", $width_ele);
-                            $el.css("height", $height_ele);
-                        }
+					if (settings.sameDimension) {
+						$el.css("width", elementWidth);
+						$el.css("height", elementHeight);
+					}
+					// Add a dummy placeholder element at the place of the element so that after getting fixed, the space is not occupied by the next element.
+					$("<div id = 'remove_" + fixedElementCount + "' class='" + ($el.attr("class")) + "' style = 'width:" + (elementWidth) + ";height:" + (elementHeight) + ";opacity:0;'></div>").insertAfter($el);
 
-                        $("<div id = 'remove_" + $i + "' class='" + ($el.attr("class")) + "' style = 'width:" + ($width_ele) + ";height:" + ($height_ele) + ";opacity:0;'></div>").insertAfter($el);
-
-                        if (settings.addClassAfter != null) {
-                            $el.addClass(settings.addClassAfter);
-                        }
-                        $_top_last = $_top;
-                        $i++;
-                        $el.trigger("fixed");
-                    }
-                    else if ($el.css("position") == "fixed" && viewTop <= $_top_last || settings.reset==true || !checkDirection) {
-                        // Unfix the element.
-                        $i--;
-                        $("#remove_" + $i).remove();
-                        $el.css("position", $_actual_position);
-                        $el.removeAttr("style");
-                        if (settings.addClassAfter != null) {
-                            $el.removeClass(settings.addClassAfter);
-                        }
-                        $el.trigger("unfixed");
-                    }
-                });
-                return $el;
-        });
-
-
-    };
+					if (settings.addClassAfter != null) {
+						$el.addClass(settings.addClassAfter);
+					}
+					actualTopPosition = currentTopPosition;
+					fixedElementCount++;
+					$el.trigger("fixed");
+				}
+				else if ($el.css("position") === "fixed" && scrollPosition <= actualTopPosition || settings.reset === true || !rightDirection) {
+					// Unfix the element.
+					fixedElementCount--;
+					// Remove the corresponding dummy placeholder element.
+					$("#remove_" + fixedElementCount).remove();
+					$el.removeAttr("style");
+					if (settings.addClassAfter != null) {
+						$el.removeClass(settings.addClassAfter);
+					}
+					$el.trigger("unfixed");
+				}
+			});
+			return $el;
+		});
+	};
 
 })(jQuery);
