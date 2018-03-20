@@ -67,7 +67,7 @@
 						$el.css("height", elementHeight);
 					}
 					// Add a dummy placeholder element at the place of the element so that after getting fixed, the space is not occupied by the next element.
-					$("<div id = 'remove_" + fixedElementCount + "' class='" + ($el.attr("class")) + "' style = 'width:" + (elementWidth) + ";height:" + (elementHeight) + ";opacity:0;'></div>").insertAfter($el);
+					$("<div id = 'remove_" + fixedElementCount + "' class='" + ($el.attr("class")) + "' style = 'width:" + (elementWidth) + "px;height:" + (elementHeight) + "px;opacity:0;'></div>").insertAfter($el);
 
 					if (settings.addClassAfter != null) {
 						$el.addClass(settings.addClassAfter);
